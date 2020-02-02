@@ -2,6 +2,12 @@ class Customer < ApplicationRecord
   attr_accessor :remember_token
   has_one :customer_room, dependent: :destroy
   has_one :room, through: :customer_room
+  has_many :messages, as: :messageable
+
+  # messageable interface
+  def sender_name
+    'ゲスト'
+  end
 
   def registration
     self.remember_token = new_token

@@ -8,9 +8,11 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @messages = @room.messages
   end
 
   def widget
     @room = current_customer.room
+    @messages = @room.messages
   end
 end

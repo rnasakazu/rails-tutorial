@@ -1,3 +1,6 @@
 h1 widget
 
-= @room.id
+h3 messages
+- @messages.each do |message|
+  p 
+    = "#{message.messageable.sender_name}: #{message.content}"

@@ -1,5 +1,7 @@
 class Customer < ApplicationRecord
   attr_accessor :remember_token
+  has_one :customer_room, dependent: :destroy
+  has_one :room, through: :customer_room
 
   def registration
     self.remember_token = new_token

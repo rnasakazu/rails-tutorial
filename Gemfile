@@ -34,6 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'jquery-rails'
 gem 'slim-rails'
 
 # Reduces boot times through caching; required in config/boot.rb

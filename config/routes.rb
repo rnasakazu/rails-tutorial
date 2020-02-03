@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   resources :rooms, only: %i[index show]
   get '/widget/floating_chat', to: 'rooms#widget', as: :floating_chat
+
+  mount ActionCable.server => '/cable'
 end

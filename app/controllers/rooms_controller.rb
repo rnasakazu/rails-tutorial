@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :registered_confirmation, only: %i[index show]
+  before_action :authenticate_admin!, only: %i[index show]
   before_action :registered_confirmation, only: :widget
 
   def index

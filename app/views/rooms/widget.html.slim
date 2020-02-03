@@ -1,6 +1,11 @@
 h1 widget
 
 h3 messages
-- @messages.each do |message|
-  p 
-    = "#{message.messageable.sender_name}: #{message.content}"
+
+#messages
+  = render(partial: "messages/message", collection: @messages)
+
+form
+  label Say something:<br>
+  input#room_id(value="#{@room.id}" type="hidden")
+  input(type="text" data-behavior="room_speaker")

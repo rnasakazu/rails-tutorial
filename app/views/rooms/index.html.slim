@@ -1,4 +1,4 @@
 h1 index
 
 - @rooms.each do |room| 
-  = room.id 
+  = link_to("#{room.id}", room_path(room))

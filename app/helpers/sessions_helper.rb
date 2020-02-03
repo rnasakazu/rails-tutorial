@@ -4,6 +4,9 @@ module SessionsHelper
     customer.registration
     cookies.permanent.signed[:customer_id] = customer.id
     cookies.permanent[:remember_token] = customer.remember_token
+    room = Room.create
+    room.create_customer_room(customer: customer)
+    room.admin_rooms.create(admin: Admin.first)
     @current_customer = customer
   end
 

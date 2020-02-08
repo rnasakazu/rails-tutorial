@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   devise_for :admins
   root 'home#index'
 
-  resources :rooms, only: %i[index show]
-  get '/widget/floating_chat', to: 'rooms#widget', as: :floating_chat
+  namespace :admins do
+    resources :rooms, only: %i[index show]
+  end
+  get '/widget/chat', to: 'rooms#enter', as: :chat
 
   mount ActionCable.server => '/cable'
 end

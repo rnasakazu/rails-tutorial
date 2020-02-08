@@ -1,5 +1,5 @@
-module SessionsHelper
-  def registration
+module CustomerAuthenticator
+  def register
     customer = Customer.create
     customer.registration
     cookies.permanent.signed[:customer_id] = customer.id
@@ -7,19 +7,18 @@ module SessionsHelper
     room = Room.create
     room.create_customer_room(customer: customer)
     room.admin_rooms.create(admin: Admin.first)
-    @current_customer = customer
   end
 
   def current_customer
-    if (customer_id = cookies.signed[:customer_id])
-      customer ||= Customer.find_by(id: customer_id)
-      if customer&.authenticated?(cookies[:remember_token])
-        @current_customer = customer
-      end
-    end
+    return unless (customer_id = cookies.signed[:customer_id])
+
+    customer = Customer.find_by(id: customer_id)
+    return unless customer&.authenticated?(cookies[:remember_token])
+
+    customer
   end
 
   def registered_confirmation
-    registration unless current_customer
+    register unless current_customer
   end
 end

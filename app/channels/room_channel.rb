@@ -1,10 +1,7 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
     return stream_for current_user.room.id if current_user.instance_of?(Customer)
-
-    current_user.rooms.each do |room|
-      stream_for room.id
-    end
+    stream_for params[:room_id].to_i
   end
 
   def unsubscribed

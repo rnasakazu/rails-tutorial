@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :rooms, only: %i[index show]
   end
-  get '/widget/chat', to: 'rooms#enter', as: :chat
+  get 'rooms/enter', to: 'rooms#enter'
 
   mount ActionCable.server => '/cable'
 end

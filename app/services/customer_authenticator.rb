@@ -6,6 +6,7 @@ module CustomerAuthenticator
     cookies.permanent[:remember_token] = customer.remember_token
     room = Room.create
     room.create_customer_room(customer: customer)
+    # TODO: 後ほど管理者を対応づける
     room.admin_rooms.create!(admin: Admin.first)
   end
 

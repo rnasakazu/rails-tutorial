@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :admins
+  root 'home#index'
+
+  namespace :admins do
+    resources :rooms, only: %i[index show]
+  end
+  get 'rooms/enter', to: 'rooms#enter'
+
+  mount ActionCable.server => '/cable'
 end

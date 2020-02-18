@@ -1,0 +1,12 @@
+.chat
+  .header
+    .title
+      | message
+    .close-btn
+      | x
+  .content
+    #messages(data-room_id="#{@room.id}")
+      = render(partial: "messages/message", collection: @messages)
+
+    form
+      textarea(type="text" data-behavior="room_speaker")

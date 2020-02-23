@@ -19,6 +19,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    },
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
